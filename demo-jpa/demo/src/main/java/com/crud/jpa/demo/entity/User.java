@@ -1,5 +1,7 @@
 package com.crud.jpa.demo.entity;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -9,34 +11,45 @@ public class User {
 
     @Id
     @GeneratedValue
-    private long id;
+    private Integer id;
 
     private String name;
 
-    private String role;
+    private Date birthDate;
 
-    protected User() {}
-
-    public User(String name, String role) {
+    public User(Integer id, String name, Date birthDate) {
         super();
+        this.id = id;
         this.name = name;
-        this.role = role;
+        this.birthDate = birthDate;
     }
 
-    public long getId() {
-        return this.id;
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
-    public String getRole() {
-        return this.role;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 
     @Override
     public String toString() {
-        return String.format("User [id=%s, name=%s, role=%s]", id, name, role);
+        return String.format("User [id=%s, name=%s, birthdate=%s]", id, name, birthDate);
     }
 }
