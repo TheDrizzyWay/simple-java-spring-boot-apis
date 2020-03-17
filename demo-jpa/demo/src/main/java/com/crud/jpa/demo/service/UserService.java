@@ -1,26 +1,21 @@
 package com.crud.jpa.demo.service;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
-
 import com.crud.jpa.demo.entity.User;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * UserService
  */
-@Repository
-@Transactional
+@Service
 public class UserService {
 
-    @PersistenceContext
-    private EntityManager entityManager;
+    @Autowired
+    private UserRepository userRepository;
 
-    public long insert(User user) {
-        this.entityManager.persist(user);
-        return user.getId();
+    public User insert(String name) {
+        return userRepository.findByName(name);
     }
     
 }
